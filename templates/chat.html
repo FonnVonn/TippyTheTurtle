@@ -1,0 +1,64 @@
+
+{% extends "base.html" %}
+
+{% block title %}Tippy - Chat{% endblock %}
+
+{% block content %}
+<section class="chat-page">
+    <p class="eyebrow">A QUIET SPACE</p>
+    <h1>Talk to Tippy.</h1>
+    <p class="subtitle">
+        Share what's on your mind. Tippy can listen, reflect,
+        and help you find a small next step.
+    </p>
+
+    <section class="chat-card">
+        <header class="chat-header">
+            <div class="tippy-avatar">🐢</div>
+            <div class="chat-brand">
+                <strong>Tippy</strong>
+                <span>● Here with you</span>
+            </div>
+            <button type="button" id="reset-chat" class="clear-chat">
+                Clear conversation
+            </button>
+        </header>
+
+        <div id="chat-messages" class="chat-messages" aria-live="polite">
+            <div class="message bot-message">
+                Hi! I'm here to listen—no pressure to have the
+                right words. How has today been feeling?
+            </div>
+        </div>
+
+        <div class="suggested-prompts">
+            <button type="button" class="suggestion">
+                I'm feeling overwhelmed
+            </button>
+            <button type="button" class="suggestion">
+                Help me slow down
+            </button>
+            <button type="button" class="suggestion">
+                I just want to talk
+            </button>
+        </div>
+
+        <form id="chat-form" class="chat-form">
+            <input
+                type="text"
+                id="message-input"
+                placeholder="Tell Tippy what's on your mind..."
+                autocomplete="off"
+                required
+            >
+            <button type="submit" id="send-button" aria-label="Send message">
+                ›
+            </button>
+        </form>
+
+        <p id="chat-status" class="chat-status" role="status"></p>
+    </section>
+</section>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+{% endblock %}

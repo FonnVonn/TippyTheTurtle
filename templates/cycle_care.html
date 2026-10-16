@@ -1,0 +1,116 @@
+
+{% extends "base.html" %}
+
+{% block title %}Cycle Care - Tippy{% endblock %}
+
+{% block content %}
+<section class="cycle-page">
+
+    <p class="eyebrow">OPTIONAL CYCLE CARE</p>
+
+    <h1>Plan with your energy, not against it.</h1>
+
+    <p class="subtitle cycle-intro">
+        Private, optional tracking that can suggest lighter days—
+        never assumptions about what you can do.
+    </p>
+
+    <!-- CURRENT CYCLE -->
+    <section class="cycle-panel">
+
+        <div class="cycle-panel-header">
+            <div>
+                <p class="section-label">CURRENT CYCLE</p>
+                <h2 id="cycle-day-title">Day 1</h2>
+            </div>
+
+            <button
+                type="button"
+                id="cycle-toggle"
+                class="text-button"
+                aria-pressed="true"
+            >
+                Turn off
+            </button>
+        </div>
+
+        <div class="cycle-progress" aria-live="polite">
+            <div class="cycle-progress-inner">
+                <strong id="cycle-day-number">1</strong>
+                <span>cycle day</span>
+            </div>
+        </div>
+
+        <label for="last-period-date" class="field-label">
+            First day of your last period
+        </label>
+
+        <input
+            type="date"
+            id="last-period-date"
+            class="cycle-date-input"
+        >
+
+        <div class="cycle-support-card">
+            <span class="support-heart" aria-hidden="true">♡</span>
+            <div>
+                <strong id="support-title">Let your energy lead.</strong>
+                <p id="support-description">
+                    You may appreciate more breaks right now.
+                    Tippy will flag packed days, but you're always in control.
+                </p>
+            </div>
+        </div>
+
+        <p id="cycle-status" class="cycle-status" aria-live="polite"></p>
+    </section>
+
+    <!-- TODAY'S NOTES -->
+    <section class="notes-panel">
+
+        <p class="section-label">TODAY'S NOTES</p>
+
+        <h2>What are you noticing?</h2>
+
+        <p class="notes-description">
+            Check anything that feels relevant today.
+        </p>
+
+        <div class="notes-options" id="cycle-note-options">
+            <label class="note-option">
+                <input type="checkbox" value="Headache">
+                <span>Headache</span>
+            </label>
+
+            <label class="note-option">
+                <input type="checkbox" value="Tender">
+                <span>Tender</span>
+            </label>
+
+            <label class="note-option">
+                <input type="checkbox" value="Focused">
+                <span>Focused</span>
+            </label>
+
+            <label class="note-option">
+                <input type="checkbox" value="Calm">
+                <span>Calm</span>
+            </label>
+        </div>
+
+        <button type="button" id="save-cycle-notes" class="save-notes-button">
+            Save today's notes
+        </button>
+
+        <p id="notes-status" class="notes-status" aria-live="polite"></p>
+
+        <p class="privacy-note">
+            This feature supports self-awareness and is not a medical
+            or fertility prediction tool.
+        </p>
+    </section>
+
+</section>
+
+<script src="{{ url_for('static', filename='cycle_care.js') }}"></script>
+{% endblock %}

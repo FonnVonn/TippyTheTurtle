@@ -1,0 +1,143 @@
+
+{% extends "base.html" %}
+
+{% block title %}Sleep & Restore - Tippy{% endblock %}
+
+{% block content %}
+<section class="sleep-page">
+
+    <p class="eyebrow">SLEEP &amp; RESTORE</p>
+
+    <h1>Rest is part of the plan.</h1>
+
+    <p class="subtitle sleep-intro">
+        Track gently, notice patterns, and build a wind-down
+        that works for real life.
+    </p>
+
+    <!-- WEEKLY REST RHYTHM -->
+    <section class="sleep-rhythm-card">
+        <div class="rhythm-heading">
+            <div>
+                <h2>Weekly Rest Rhythm</h2>
+                <p>Past 7 nights of nourishment</p>
+            </div>
+
+            <div class="rhythm-average">
+                <strong id="sleep-average">7.2h</strong>
+                <span>nightly avg</span>
+            </div>
+        </div>
+
+        <div class="rhythm-insight">
+            <span aria-hidden="true">✿</span>
+            <p id="sleep-insight">Your rest rhythm is taking shape.</p>
+        </div>
+
+        <div
+            id="sleep-chart"
+            class="sleep-chart"
+            role="img"
+            aria-label="Sleep duration over the past seven nights"
+        ></div>
+
+        <div class="chart-legend">
+            <span><i class="legend-dot recent"></i>Most recent</span>
+            <span><i class="legend-dot recovery"></i>Deep recovery</span>
+            <span><i class="legend-dot gentle"></i>Gentle rest</span>
+        </div>
+
+        <p class="chart-note">
+            Your chart reflects the sleep logs saved in this browser.
+            Unlogged nights are illustrative estimates.
+        </p>
+    </section>
+
+    <!-- SLEEP LOG -->
+    <section class="sleep-panel">
+        <p class="section-label">LOG LAST NIGHT</p>
+        <h2>How did you sleep?</h2>
+
+        <form id="sleep-log-form">
+            <div class="sleep-time-fields">
+                <div>
+                    <label for="bedtime">Bedtime</label>
+                    <input id="bedtime" type="time" required>
+                </div>
+
+                <div>
+                    <label for="wake-time">Wake time</label>
+                    <input id="wake-time" type="time" required>
+                </div>
+            </div>
+
+            <div class="quality-field">
+                <label for="sleep-quality">
+                    Sleep quality
+                    <strong><span id="quality-value">4</span> / 5</strong>
+                </label>
+
+                <input
+                    id="sleep-quality"
+                    type="range"
+                    min="1"
+                    max="5"
+                    value="4"
+                    step="1"
+                >
+
+                <div class="quality-scale">
+                    <span>Restless</span>
+                    <span>Restful</span>
+                </div>
+            </div>
+
+            <p id="sleep-duration-preview" class="sleep-duration-preview">
+                Add your bedtime and wake time to calculate duration.
+            </p>
+
+            <button type="submit" class="sleep-save-button">
+                Save sleep log
+            </button>
+
+            <p id="sleep-log-status" class="sleep-status" aria-live="polite"></p>
+        </form>
+    </section>
+
+    <!-- WIND DOWN -->
+    <section class="sleep-panel wind-down-panel">
+        <p class="section-label">YOUR WIND-DOWN</p>
+        <h2>A softer landing</h2>
+
+        <div class="wind-down-list">
+            <label class="wind-down-item">
+                <input type="checkbox" value="worries">
+                <span class="wind-down-number">1</span>
+                <span>Put tomorrow's worries on paper</span>
+            </label>
+
+            <label class="wind-down-item">
+                <input type="checkbox" value="screens">
+                <span class="wind-down-number">2</span>
+                <span>Dim screens and overhead lights</span>
+            </label>
+
+            <label class="wind-down-item">
+                <input type="checkbox" value="water">
+                <span class="wind-down-number">3</span>
+                <span>Set out water for the morning</span>
+            </label>
+        </div>
+
+        <div class="wind-down-note">
+            Consistency matters more than perfection.
+            Missing a night doesn't reset your progress.
+        </div>
+
+        <p id="wind-down-status" class="sleep-status" aria-live="polite"></p>
+    </section>
+
+</section>
+
+<script src="{{ url_for('static', filename='sleep.js') }}"></script>
+{% endblock %}

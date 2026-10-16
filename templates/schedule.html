@@ -1,0 +1,102 @@
+
+{% extends "base.html" %}
+
+{% block title %}Schedule - Tippy{% endblock %}
+
+{% block content %}
+<section class="schedule-page">
+
+    <p class="eyebrow">PLAN WITH COMPASSION</p>
+
+    <h1>Make room for your whole day.</h1>
+
+    <p class="subtitle schedule-intro">
+        Plan work, meals, and recovery together—not as competing priorities.
+    </p>
+
+    <!-- WEEK SELECTOR -->
+    <div class="week-strip" id="week-strip" aria-label="Choose a date"></div>
+
+    <!-- DAILY PLAN -->
+    <section class="schedule-panel">
+        <div class="schedule-panel-header">
+            <div>
+                <p class="section-label">DAY PLAN</p>
+                <h2 id="selected-date-title">Your day</h2>
+            </div>
+
+            <span class="planned-badge" id="planned-total">0h planned</span>
+        </div>
+
+        <div id="schedule-list" class="schedule-list"></div>
+
+        <p id="empty-schedule" class="empty-schedule" hidden>
+            Nothing planned yet. You can leave some room to breathe, too.
+        </p>
+    </section>
+
+    <!-- ADD ACTIVITY -->
+    <section class="schedule-panel add-schedule-panel">
+        <p class="section-label">ADD TO YOUR DAY</p>
+
+        <form id="schedule-form">
+            <label class="visually-hidden" for="activity-name">
+                Activity name
+            </label>
+            <input
+                id="activity-name"
+                name="activity-name"
+                type="text"
+                placeholder="Class, lunch, focus time..."
+                maxlength="80"
+                required
+            >
+
+            <div class="schedule-form-row">
+                <div>
+                    <label for="activity-time">Start time</label>
+                    <input
+                        id="activity-time"
+                        name="activity-time"
+                        type="time"
+                        value="09:00"
+                        required
+                    >
+                </div>
+
+                <div>
+                    <label for="activity-duration">Minutes</label>
+                    <input
+                        id="activity-duration"
+                        name="activity-duration"
+                        type="number"
+                        min="5"
+                        max="720"
+                        value="60"
+                        required
+                    >
+                </div>
+            </div>
+
+            <label for="activity-type">Type</label>
+            <select id="activity-type" name="activity-type">
+                <option value="Focus">Focus</option>
+                <option value="Class">Class</option>
+                <option value="Meal">Meal</option>
+                <option value="Break">Break</option>
+                <option value="Personal">Personal</option>
+            </select>
+
+            <button type="submit" class="add-schedule-button">
+                <span aria-hidden="true">＋</span>
+                Add to schedule
+            </button>
+
+            <p id="schedule-status" class="schedule-status" aria-live="polite"></p>
+        </form>
+    </section>
+
+</section>
+
+<script src="{{ url_for('static', filename='schedule.js') }}"></script>
+{% endblock %}

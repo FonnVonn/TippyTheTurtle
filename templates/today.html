@@ -1,0 +1,166 @@
+
+{% extends "base.html" %}
+
+{% block title %}Today - Tippy{% endblock %}
+
+{% block content %}
+<section class="today-page">
+
+    <!-- WELCOME -->
+    <section class="today-welcome">
+        <p class="eyebrow"><span class="welcome-leaf">♧</span> TODAY'S PACE</p>
+        <h1>Hello Maya!</h1>
+        <p class="subtitle">
+            You have a full day ahead. Let's make some room to breathe.
+        </p>
+    </section>
+
+    <!-- DAILY CHECK-IN -->
+    <section class="checkin-card">
+        <div class="checkin-decoration" aria-hidden="true"></div>
+
+        <div class="checkin-content">
+            <p class="section-label">DAILY CHECK-IN</p>
+            <h2>How are you arriving today?</h2>
+            <p class="checkin-subtitle">
+                No need to overthink it. Just notice where you are.
+            </p>
+
+            <div class="mood-options" role="group" aria-label="Choose your mood">
+                <button type="button" class="mood-option mood-rough" data-mood="Rough">
+                    <span class="mood-face">⌒</span>
+                    <span>Rough</span>
+                </button>
+                <button type="button" class="mood-option mood-low" data-mood="Low">
+                    <span class="mood-face">−</span>
+                    <span>Low</span>
+                </button>
+                <button type="button" class="mood-option mood-okay" data-mood="Okay">
+                    <span class="mood-face">〰</span>
+                    <span>Okay</span>
+                </button>
+                <button type="button" class="mood-option mood-good" data-mood="Good">
+                    <span class="mood-face">⌣</span>
+                    <span>Good</span>
+                </button>
+                <button type="button" class="mood-option mood-great" data-mood="Great">
+                    <span class="mood-face">⌣</span>
+                    <span>Great</span>
+                </button>
+            </div>
+
+            <p id="mood-status" class="mood-status" aria-live="polite"></p>
+
+            <a href="{{ url_for('tippy_page') }}" class="today-primary-button">
+                Check in with Tippy
+            </a>
+        </div>
+
+        <div class="tippy-illustration" aria-hidden="true">
+            <span class="tippy-heart">♡</span>
+            <div class="tippy-speech">
+                Whatever you're feeling,<br>
+                I'm here with you.
+            </div>
+            <div class="tippy-placeholder">🐢</div>
+        </div>
+    </section>
+
+    <!-- TODAY'S RHYTHM -->
+    <section class="today-panel rhythm-panel">
+        <div class="today-panel-heading">
+            <div>
+                <p class="section-label">YOUR DAY</p>
+                <h2>Today's rhythm</h2>
+            </div>
+            <a href="{{ url_for('schedule_page') }}" class="today-text-link">
+                View schedule <span>›</span>
+            </a>
+        </div>
+
+        <div class="packed-reminder">
+            <span class="reminder-icon">✦</span>
+            <div>
+                <strong id="rhythm-reminder-title">Make room for a little pause.</strong>
+                <p id="rhythm-reminder-text">
+                    Small breaks count, too. You don't have to do everything at once.
+                </p>
+            </div>
+        </div>
+
+        <div id="today-timeline" class="today-timeline"></div>
+
+        <p id="today-empty-schedule" class="today-empty" hidden>
+            Your day is still open. Add an activity whenever you're ready.
+        </p>
+
+        <a href="{{ url_for('schedule_page') }}" class="today-add-link">
+            <span>＋</span> Add something
+        </a>
+    </section>
+
+    <!-- SLEEP SUMMARY -->
+    <section class="today-panel sleep-summary-panel">
+        <div class="today-panel-heading">
+            <div>
+                <p class="section-label">LAST NIGHT</p>
+                <h2>Sleep &amp; restore</h2>
+            </div>
+            <a href="{{ url_for('sleep_page') }}" class="sleep-moon" aria-label="Open sleep page">
+                ☾
+            </a>
+        </div>
+
+        <div class="sleep-summary-main">
+            <strong id="today-sleep-duration">—</strong>
+            <span id="today-sleep-quality" class="sleep-quality-badge">Not logged</span>
+        </div>
+
+        <div id="sleep-progress-bars" class="sleep-progress-bars" aria-label="Sleep duration indicator">
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span>
+        </div>
+
+        <div class="sleep-goal">
+            <span>◷</span>
+            <span id="today-sleep-detail">Your rest matters, even when the day gets busy.</span>
+        </div>
+
+        <a href="{{ url_for('sleep_page') }}" class="today-text-link sleep-view-link">
+            View sleep log <span>›</span>
+        </a>
+    </section>
+
+    <!-- TALK TO TIPPY -->
+    <section class="talk-tippy-card">
+        <div class="talk-tippy-heading">
+            <span class="talk-sparkle">✦</span>
+            <div>
+                <h2>Talk to Tippy</h2>
+                <p>A quiet space, whenever you need it.</p>
+            </div>
+        </div>
+
+        <form id="today-chat-form" class="today-chat-form">
+            <label class="visually-hidden" for="today-chat-message">
+                Message Tippy
+            </label>
+            <input
+                id="today-chat-message"
+                type="text"
+                maxlength="1000"
+                placeholder="What's on your mind?"
+            >
+            <button type="submit" aria-label="Continue to Tippy chat">›</button>
+        </form>
+
+        <p class="talk-disclaimer">
+            Tippy offers support, not medical advice. If you're in immediate
+            danger, contact local emergency services.
+        </p>
+    </section>
+
+</section>
+
+<script src="{{ url_for('static', filename='today.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}Tippy{% endblock %}</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main class="app">
+        <header class="topbar">
+            <a class="brand" href="{{ url_for('home') }}">Tippy</a>
+            <span class="notification" aria-label="Notifikasi">♧</span>
+        </header>
+
+        <section class="page-content">
+            {% block content %}{% endblock %}
+        </section>
+
+        <nav class="bottom-nav" aria-label="Navigasi utama">
+            <a href="{{ url_for('home') }}"
+               class="nav-item {% if active_page == 'today' %}active{% endif %}">
+                <span>⌂</span>Today
+            </a>
+
+            <a href="{{ url_for('schedule_page') }}"
+               class="nav-item {% if active_page == 'schedule' %}active{% endif %}">
+                <span>▦</span>Schedule
+            </a>
+
+            <a href="{{ url_for('sleep_page') }}"
+               class="nav-item {% if active_page == 'sleep' %}active{% endif %}">
+                <span>☾</span>Sleep
+            </a>
+
+            <a href="{{ url_for('cycle_care_page') }}"
+               class="nav-item {% if active_page == 'cycle' %}active{% endif %}">
+                <span>♡</span>Cycle care
+            </a>
+
+            <a href="{{ url_for('tippy_page') }}"
+               class="nav-item {% if active_page == 'tippy' %}active{% endif %}">
+                <span>▤</span>Tippy
+            </a>
+        </nav>
+    </main>
+</body>
+</html>
