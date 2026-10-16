@@ -48,4 +48,4 @@ Notes
 •	A valid Google Gemini API key and internet connection are required for AI responses.
 •	This application provides emotional support, not professional medical or psychological care.
 Author
-StefEly
+bebasss team
